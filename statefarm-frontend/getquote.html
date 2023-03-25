@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get a Quote</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+    <link href="source/css/getquote.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </head>
+  <body className="snippet-body">
+
+    <header>
+      <nav class="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+          <a href="index.html" class="navbar-brand">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/State_Farm_logo.svg/2560px-State_Farm_logo.svg.png"
+              width="150"
+              alt=""
+              class="d-inline-block align-middle mr-2"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav nav-pills me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-expanded="false"
+                  >Insurance</a
+                >
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="disabilities.html"
+                      >Disability Insurance</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="life.html">Life Insurance</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="getquote.html">Get a quote</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="find-agent.html">Talk to Agent</a>
+              </li>
+            </ul>
+            <!-- <div class="col-md-4 text-end">
+              <button
+                type="button"
+                class="btn btn-outline-danger me-2"
+                data-toggle="modal"
+                data-target="#myModal"
+              >
+                Login/SignUp
+              </button>
+              <button type="button" class="btn btn-outline-danger me-2">Login</button>
+              <button type="button" class="btn btn-danger">Sign-up</button> -->
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div
+        class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Login/Registration</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-hidden="true"
+              >
+                ×
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div
+                  class="col-md-8"
+                  style="border-right: 1px dotted #c2c2c2; padding-right: 30px"
+                >
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs">
+                    <li class="active text-danger">
+                      <a href="#Login" class="text-secondary" data-toggle="tab"
+                        >Login/</a
+                      >
+                    </li>
+                    <li class="text-danger">
+                      <a
+                        href="#Registration"
+                        class="text-secondary"
+                        data-toggle="tab"
+                        >Registration</a
+                      >
+                    </li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="Login">
+                      <!-- <form role="form" class="form-horizontal"> -->
+                      <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">
+                          Email</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="email1"
+                            placeholder="Email"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label
+                          for="exampleInputPassword1"
+                          class="col-sm-2 control-label"
+                        >
+                          Password</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            placeholder="password"
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                          <button
+                            type="submit"
+                            onclick="signin()"
+                            class="btn btn-outline-danger me-2"
+                          >
+                            Submit
+                          </button>
+                          <!-- <a href="javascript:;">Forgot your password?</a> -->
+                        </div>
+                      </div>
+                      <!-- </form> -->
+                    </div>
+                    <div class="tab-pane" id="Registration">
+                      <form role="form" class="form-horizontal">
+                        <div class="form-group">
+                          <label for="email" class="col-sm-2 control-label">
+                            Name</label
+                          >
+                          <div class="col-sm-10">
+                            <div class="row">
+                              <div class="col-md-3">
+                                <select class="form-control">
+                                  <option>Mr.</option>
+                                  <option>Ms.</option>
+                                  <option>Mrs.</option>
+                                </select>
+                              </div>
+                              <div class="col-md-9">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="First Name"
+                                  name="firstname"
+                                  id="firstname2"
+                                />
+                              </div>
+                              <div class="col-md-9">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Last Name"
+                                  name="lastname"
+                                  id="lastname2"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="email" class="col-sm-2 control-label">
+                            Email</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="email2"
+                              placeholder="Email"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="mobile" class="col-sm-2 control-label">
+                            Mobile</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="tel"
+                              class="form-control"
+                              id="mobile2"
+                              placeholder="Mobile"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="claim" class="col-sm-4 control-label">
+                            Claim Number</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="claimnumber"
+                              placeholder="Claim Number"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="password" class="col-sm-2 control-label">
+                            Password</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="password2"
+                              placeholder="Password"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="dob2" class="col-sm-3 control-label">
+                            Date of Birth</label
+                          >
+                          <div class="col-sm-10">
+                            <input
+                              type="date"
+                              class="form-control"
+                              id="dob2"
+                              placeholder="Date of Birth"
+                            />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-10">
+                            <button
+                              type="button"
+                              class="btn btn-outline-danger me-2"
+                              onclick="register()"
+                            >
+                              Save & Continue
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-outline-danger me-2"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div
+          class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2"
+        >
+          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+            <h2 id="heading">Get a Quote</h2>
+            <p>Fill all form field to go to next step</p>
+
+            <form id="msform">
+              <!-- progressbar -->
+              <ul id="progressbar">
+                <li class="active" id="dob"><strong>Date of Birth</strong></li>
+                <li id="sex"><strong>Sex</strong></li>
+                <li id="tobacco"><strong>Tobacco & Alcohol</strong></li>
+                <li id="height"><strong>Height & Weight</strong></li>
+                <li id="health"><strong>Health</strong></li>
+                <li id="coverage"><strong>Coverage</strong></li>
+                <!-- <li id="confirm"><strong>Finish</strong></li> -->
+              </ul>
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <br />
+              <!-- fieldsets -->
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Date of Birth:</h2>
+                    </div>
+                    <div class="col-5">
+                      <h2 class="steps">Step 1 - 6</h2>
+                    </div>
+                  </div>
+                  <input type="date" name="dob" id="dobs" />
+                </div>
+                <input
+                  type="button"
+                  name="next"
+                  class="next action-button"
+                  value="Next"
+                />
+              </fieldset>
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Sex:</h2>
+                    </div>
+                    <div class="col-5">
+                      <h2 class="steps">Step 2 - 6</h2>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="sex"
+                      id="male"
+                      value="male"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="sex"
+                      id="female"
+                      value="female"
+                      checked
+                    />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female
+                    </label>
+                  </div>
+                </div>
+                <input
+                  type="button"
+                  name="next"
+                  class="next action-button"
+                  value="Next"
+                />
+                <input
+                  type="button"
+                  name="previous"
+                  class="previous action-button-previous"
+                  value="Previous"
+                />
+              </fieldset>
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Tobacco and Alcohol:</h2>
+                    </div>
+                    <div class="col-5">
+                      <h2 class="steps">Step 3 - 6</h2>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tobacco"
+                      id="tobacco_yes"
+                      value="yes"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tobacco"
+                      id="tobacco_no"
+                      value="no"
+                      checked
+                    />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No
+                    </label>
+                  </div>
+                </div>
+                <input
+                  type="button"
+                  name="next"
+                  class="next action-button"
+                  value="Next"
+                />
+                <input
+                  type="button"
+                  name="previous"
+                  class="previous action-button-previous"
+                  value="Previous"
+                />
+              </fieldset>
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Height and Weight:</h2>
+                    </div>
+                    <div class="col-5">
+                      <h2 class="steps">Step 4 - 6</h2>
+                    </div>
+                  </div>
+                  <label class="fieldlabels">Enter Height:</label>
+                  <input type="number" name="height" id="heights" />
+                  <label class="fieldlabels">Enter Weight:</label>
+                  <input type="number" name="weight" id="weight" />
+                </div>
+                <input
+                  type="button"
+                  name="next"
+                  class="next action-button"
+                  value="Next"
+                />
+                <input
+                  type="button"
+                  name="previous"
+                  class="previous action-button-previous"
+                  value="Previous"
+                />
+              </fieldset>
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Health:</h2>
+                    </div>
+                    <div class="col-5">
+                      <h2 class="steps">Step 5 - 6</h2>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="health"
+                      id="fair"
+                      value="1"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Fair
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="health"
+                      id="average"
+                      value="2"
+                      checked
+                    />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Average
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="health"
+                      value="3"
+                      id="good"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Good
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="health"
+                      value="4"
+                      id="excellent"
+                      checked
+                    />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Excellent
+                    </label>
+                  </div>
+                </div>
+                <input
+                  type="button"
+                  name="next"
+                  class="next action-button"
+                  value="Next"
+                />
+                <input
+                  type="button"
+                  name="previous"
+                  class="previous action-button-previous"
+                  value="Previous"
+                />
+              </fieldset>
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Coverage:</h2>
+                    </div>
+                    <div class="col-5">
+                      <h2 class="steps">Step 6 - 6</h2>
+                    </div>
+                  </div>
+                  <label class="fieldlabels">Select Coverage Amount:</label>
+                  <select
+                    id="coverage_amt"
+                    class="-oneX-dropdown"
+                    name="coverage_amt"
+                  >
+                    <option
+                      value="Select coverage amount"
+                      disabled=""
+                      hidden=""
+                    ></option>
+                    <option value="100000">$100,000</option>
+                    <option value="250000">$250,000</option>
+                    <option value="500000">$500,000</option>
+                    <option value="750000">$750,000</option>
+                    <option value="1000000">$1,000,000</option>
+                  </select>
+                  <label class="fieldlabels">Select Term Length:</label>
+                  <select
+                    id="coverage_term"
+                    class="-oneX-dropdown"
+                    name="coverage_term"
+                  >
+                    <option
+                      value="Select term length"
+                      disabled=""
+                      hidden=""
+                    ></option>
+                    <option value="10">10 years</option>
+                    <option value="20">20 years</option>
+                    <option value="30">30 years</option>
+                  </select>
+                </div>
+                <input
+                  type="button"
+                  name="next"
+                  class="next action-button"
+                  value="Submit"
+                  onclick="saveForm()"
+                />
+                <input
+                  type="button"
+                  name="previous"
+                  class="previous action-button-previous"
+                  value="Previous"
+                />
+              </fieldset>
+              <fieldset>
+                <div class="form-card">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="fs-title">Finish:</h2>
+                    </div>
+                    <div class="col-5">
+                      <!-- <h2 class="steps">Step 4 - 4</h2> -->
+                    </div>
+                  </div>
+                  <br /><br />
+                  <h2 class="purple-text text-center">
+                    <strong>AWESOME!!!</strong>
+                  </h2>
+                  <br />
+                  <div class="row justify-content-center">
+                    <div class="col-3">
+                      <div class="tab-pane active" id="monthlyQuote">
+                        <h1>$13 per month</h1>
+                      </div>
+                      <!-- <img
+                        src="https://i.imgur.com/GwStPmg.png"
+                        class="fit-image"
+                      /> -->
+                    </div>
+                  </div>
+                  <br /><br />
+                  <div class="row justify-content-center">
+                    <div class="col-7 text-center">
+                      <h5 class="purple-text text-center">
+                        is your Monthly Premium
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer bg-light text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a
+            class="btn btn-primary btn-floating m-1"
+            style="background-color: #3b5998;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+    
+          <!-- Twitter -->
+          <a
+            class="btn btn-primary btn-floating m-1"
+            style="background-color: #55acee;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+    
+          <!-- Google -->
+          <a
+            class="btn btn-primary btn-floating m-1"
+            style="background-color: #dd4b39;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a
+            class="btn btn-primary btn-floating m-1"
+            style="background-color: #ac2bac;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+    
+          <!-- Linkedin -->
+          <a
+            class="btn btn-primary btn-floating m-1"
+            style="background-color: #0082ca;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <!-- Github -->
+          <a
+            class="btn btn-primary btn-floating m-1"
+            style="background-color: #333333;"
+            href="#!"
+            role="button"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center text-dark p-3" style="background-color: rgb(253, 245, 245);">
+        © 2022 Copyright:
+        <a class="text-dark" href="">State Farm Mutual Automobile Insurance Company, Bloomington, IL</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <script
+      type="text/javascript"
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    ></script>
+    <script type="text/javascript" src="#"></script>
+    <script type="text/javascript" src="#"></script>
+    <script type="text/javascript" src="#"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+        var current = 1;
+        var steps = $("fieldset").length;
+
+        setProgressBar(current);
+
+        $(".next").click(function () {
+          current_fs = $(this).parent();
+          next_fs = $(this).parent().next();
+
+          //Add Class Active
+          $("#progressbar li")
+            .eq($("fieldset").index(next_fs))
+            .addClass("active");
+
+          //show the next fieldset
+          next_fs.show();
+          //hide the current fieldset with style
+          current_fs.animate(
+            { opacity: 0 },
+            {
+              step: function (now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                  display: "none",
+                  position: "relative",
+                });
+                next_fs.css({ opacity: opacity });
+              },
+              duration: 500,
+            }
+          );
+          setProgressBar(++current);
+        });
+
+        $(".previous").click(function () {
+          current_fs = $(this).parent();
+          previous_fs = $(this).parent().prev();
+
+          //Remove class active
+          $("#progressbar li")
+            .eq($("fieldset").index(current_fs))
+            .removeClass("active");
+
+          //show the previous fieldset
+          previous_fs.show();
+
+          //hide the current fieldset with style
+          current_fs.animate(
+            { opacity: 0 },
+            {
+              step: function (now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                  display: "none",
+                  position: "relative",
+                });
+                previous_fs.css({ opacity: opacity });
+              },
+              duration: 500,
+            }
+          );
+          setProgressBar(--current);
+        });
+
+        function setProgressBar(curStep) {
+          var percent = parseFloat(100 / steps) * curStep;
+          percent = percent.toFixed();
+          $(".progress-bar").css("width", percent + "%");
+        }
+
+        $(".submit").click(function () {
+          return false;
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      var myLink = document.querySelector('a[href="#"]');
+      myLink.addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+
+      async function saveForm() {
+        var dob = document.getElementById("dobs").value;
+
+        var sex = document.getElementsByName("sex");
+        var gender = "male";
+        for (i = 0; i < sex.length; i++) {
+          if (sex[i].checked) gender = sex[i].value;
+        }
+
+        var tobacco = document.getElementsByName("tobacco");
+        var isSmoker = "yes";
+        for (i = 0; i < tobacco.length; i++) {
+          if (tobacco[i].checked) isSmoker = tobacco[i].value;
+        }
+
+        var height = document.getElementById("heights").value;
+        var weight = document.getElementById("weight").value;
+
+        var health = document.getElementsByName("health");
+        var hlth = "1";
+        for (i = 0; i < health.length; i++) {
+          if (health[i].checked) hlth = health[i].value;
+        }
+        var coverage_amt = document.getElementById("coverage_amt").value;
+        var coverage_term = document.getElementById("coverage_term").value;
+
+        card = {
+          dob,
+          gender,
+          isSmoker,
+          height,
+          weight,
+          hlth,
+          coverage_amt,
+          coverage_term,
+        };
+        console.log(card);
+
+        const response = await fetch("http://127.0.0.1:8080/getQuote", {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            dob: dob,
+            sex: gender,
+            isSmoker: isSmoker,
+            height: height,
+            weight: weight,
+            health: hlth,
+            coverageAmount: coverage_amt,
+            coverageTerm: coverage_term,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error! status: ${response.status}`);
+        } else {
+          response.json().then((data) => {
+            document.getElementById("monthlyQuote").innerHTML =
+              "<h2>" +
+              Math.round((data.value + Number.EPSILON) * 100) / 100 +
+              "</h2>";
+          });
+        }
+
+        response.json().then((data) => {
+          console.log(data.value);
+        });
+      }
+    </script>
+    <script src="/statefarm-frontend/source/js/homepage_charts.js"></script>
+    <!-- Popper JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <!-- Bootstrap JS -->
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+   
+   
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+  </body>
+</html>

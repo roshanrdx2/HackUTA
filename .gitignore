@@ -1,0 +1,4 @@
+/.metadata/
+statefarm-backend/api/target/*
+statefarm-backend/api/target*
+statefarm-backend/api/target
